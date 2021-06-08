@@ -31,7 +31,7 @@ struct ContentsTabView: View {
                 // MARK: 미션 탭
                 MissionHomeView()
                     .tabItem {
-                        Image(systemName: "rectangle.grid.3x2")
+                        Image("iconHomeTabPressed")
                         Text("홈")
                     }
                     .tag(Tabs.homeTab)
@@ -39,13 +39,18 @@ struct ContentsTabView: View {
                 // MARK: 지도 탭
                 StoreMapView()
                     .tabItem {
-                        Label("미션", image: "iconMission")
+                        Image("iconMissionTabPressed")
+                        Text("미션")
+//                        Label("미션", image: "iconMissionTabPressed")
                     }
                     .tag(Tabs.missionTab)
                 
                 CommunityView()
                     .tabItem {
-                        Label("커뮤니티", image: "iconCommunity")
+                        Image("iconCommunityTabPressed")
+                            .renderingMode(.original)
+                        Text("커뮤니티")
+//                        Label("커뮤니티", image: "iconCommunityTabPressed")
                     }
                     .tag(Tabs.communityTab)
             }

@@ -21,13 +21,13 @@ struct ZeroWasteApp: App {
         let viewModel: LoginViewModel = .init(provider: provider)
         
         WindowGroup {
-            LoadingView(viewModel: viewModel)
-                .onOpenURL(perform: { url in
-                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                        _ = AuthController.handleOpenUrl(url: url)
-                    }
-                })
-//            TestView()
+//            LoadingView(viewModel: viewModel)
+//                .onOpenURL(perform: { url in
+//                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+//                        _ = AuthController.handleOpenUrl(url: url)
+//                    }
+//                })
+            TestView()
         }
     }
 }
@@ -35,6 +35,10 @@ struct ZeroWasteApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         print("didFinishLaunchingWithOptions called!")
+        
+        if let token = UserProperties.userInfo?.token {
+            print(token)
+        }
         
         KakaoSDKCommon.initSDK(appKey: "a6a65513c92414f5787febf31973bb91", loggingEnable: true)
         

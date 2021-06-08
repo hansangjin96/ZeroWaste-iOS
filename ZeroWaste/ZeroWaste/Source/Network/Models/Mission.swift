@@ -9,18 +9,19 @@ import Foundation
 
 struct Mission: Codable {
     let id: Int
-    let name: String?
+    let name: String
     let owner: Int
-    let place: Place?
-    let theme: String?
-    let difficulty: Difficulty?
-    let bannerImgUrls: [URL]? // URL
+    let place: Place
+    let theme: [Theme]
+    let difficulty: Difficulty
+    let bannerImgUrls: [URL]
     let content: String
-    let sentenceForCheer: String?
-    let signedUrlNum: Int?
-    let likesCount: Int?
-    let successfulCount: Int?
-    let inProgressCount: Int?
+    let sentenceForCheer: String
+//    let signedUrlNum: Int?
+    let likesCount: Int
+    let successfulCount: Int
+    let inProgressCount: Int
+    let creater: User
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -32,10 +33,11 @@ struct Mission: Codable {
         case bannerImgUrls = "banner_img_urls"
         case content
         case sentenceForCheer = "sentence_for_cheer"
-        case signedUrlNum = "signed_url_num"
+//        case signedUrlNum = "signed_url_num"
         case likesCount = "likes_count"
         case successfulCount = "successful_count"
         case inProgressCount = "in_progress_count"
+        case creater
     }
 }
 

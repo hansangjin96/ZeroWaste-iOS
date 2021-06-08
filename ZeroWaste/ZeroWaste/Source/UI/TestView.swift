@@ -13,7 +13,7 @@ struct TestView: View {
     var body: some View {
         var bag = Set<AnyCancellable>()
         Button("Test") { 
-            NetworkManager().request(with: .blockListCreate(blockList: BlockList(id: nil, targetUserId: 2, reporterId: 3, description: .one)), for: ResultBase<BlockList>.self)
+            NetworkManager().request(with: .missionsList(), for: ResultBase<[Mission]>.self)
                 .sink { 
                     print("sink \($0)")
                 } receiveValue: { 

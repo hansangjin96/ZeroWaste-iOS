@@ -49,7 +49,12 @@ enum Endpoint {
     case authRefreshCreate(token: RefreshJSONWebToken)
     
     // MARK: Missions
-    case missionsList(place: String, difficulty: Mission.Difficulty, theme: Mission.Theme, ordering: Mission.Ordering)
+    case missionsList(
+            place: String? = nil, 
+            difficulty: Mission.Difficulty? = nil,
+            theme: Mission.Theme? = nil,
+            ordering: Mission.Ordering? = nil
+         )
     case missionsCreate(mission: Mission)
     case missionsRead(id: Int)
     case missionsUpdate(id: Int, mission: Mission)
