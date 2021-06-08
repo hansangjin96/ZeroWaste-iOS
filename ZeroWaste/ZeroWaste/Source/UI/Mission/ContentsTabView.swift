@@ -28,7 +28,7 @@ struct ContentsTabView: View {
         NavigationView {
             TabView(selection: $tabSelection) {
 
-                // MARK: 미션 탭
+                // MARK: 홈 탭
                 MissionHomeView()
                     .tabItem {
                         Image("iconHomeTabPressed")
@@ -36,8 +36,8 @@ struct ContentsTabView: View {
                     }
                     .tag(Tabs.homeTab)
 
-                // MARK: 지도 탭
-                StoreMapView()
+                // MARK: 미션 탭
+                MissionTabView()
                     .tabItem {
                         Image("iconMissionTabPressed")
                         Text("미션")
@@ -68,7 +68,7 @@ struct ContentsTabView: View {
     private func navBarTitle(tabSelection: Tabs) -> String {
         switch tabSelection {
         case .homeTab: return "홈"
-        case .missionTab: return "지도"
+        case .missionTab: return "장소 별 미션"
         case .communityTab: return "커뮤니티"
         }
     }

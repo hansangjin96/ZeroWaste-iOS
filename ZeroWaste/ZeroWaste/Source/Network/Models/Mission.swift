@@ -17,7 +17,6 @@ struct Mission: Codable {
     let bannerImgUrls: [URL]
     let content: String
     let sentenceForCheer: String
-//    let signedUrlNum: Int?
     let likesCount: Int
     let successfulCount: Int
     let inProgressCount: Int
@@ -33,7 +32,6 @@ struct Mission: Codable {
         case bannerImgUrls = "banner_img_urls"
         case content
         case sentenceForCheer = "sentence_for_cheer"
-//        case signedUrlNum = "signed_url_num"
         case likesCount = "likes_count"
         case successfulCount = "successful_count"
         case inProgressCount = "in_progress_count"
@@ -43,16 +41,29 @@ struct Mission: Codable {
 
 extension Mission {
     enum Place: String, Codable {
-        case etc
+        case all
         case kitchen
-        case bathroom
         case cafe
         case restaurant
+        case etc
+        
+        case bathroom
         case outside
+        
+        var description: String {
+            switch self {
+            case .all: return "전체"
+            case .kitchen: return "주방"
+            case .cafe: return "카페"
+            case .restaurant: return "식당"
+            case .etc: return "기타"
+            case .bathroom: return "화장실"
+            case .outside: return "야외"
+            }
+        }
     }
     
     enum Difficulty: String, Codable {
-        // TODO: 이거 되는지 확인
         case veryEasy = "very_easy"
         case easy
         case medium

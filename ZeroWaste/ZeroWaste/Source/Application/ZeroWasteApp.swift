@@ -21,13 +21,13 @@ struct ZeroWasteApp: App {
         let viewModel: LoginViewModel = .init(provider: provider)
         
         WindowGroup {
-//            LoadingView(viewModel: viewModel)
-//                .onOpenURL(perform: { url in
-//                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-//                        _ = AuthController.handleOpenUrl(url: url)
-//                    }
-//                })
-            TestView()
+            LoadingView(viewModel: viewModel)
+                .onOpenURL(perform: { url in
+                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                        _ = AuthController.handleOpenUrl(url: url)
+                    }
+                })
+//            TestView()
         }
     }
 }

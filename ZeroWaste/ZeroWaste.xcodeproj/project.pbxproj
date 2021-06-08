@@ -23,6 +23,7 @@
 		3C95E41F572DD93695A3E645 /* Bool+isTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED9BBB4335EC98CCC37665D /* Bool+isTrue.swift */; };
 		3E4829C6EC2A196B00681704 /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A0C774CC89445A0BF96A11 /* UserDefaultStorage.swift */; };
 		3E832DCE6EF684554CF2BA80 /* FeedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33725FBDAD0FD08D0F3F013F /* FeedProfileView.swift */; };
+		40625DA2266F12F1000EB9B4 /* MissionTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40625DA1266F12F1000EB9B4 /* MissionTabView.swift */; };
 		41318797F6EE81114A4095F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E398F9099FE433029F92BDDA /* Preview Assets.xcassets */; };
 		438F71B172D4D25F46EBDFB8 /* BlockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D06E5A4AEA8DE3037872AF1 /* BlockList.swift */; };
 		48CB68DC35F0D0BC28D62849 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8CE642D237698EA5FD50F /* SubmitButton.swift */; };
@@ -75,6 +76,7 @@
 		38A691015DE13F9ADC589054 /* ZeroWasteRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZeroWasteRelease.entitlements; sourceTree = "<group>"; };
 		39854FE0DD5B4B44DECF994F /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		3BDC4439B29E0D94BC3D1296 /* Pods-ZeroWaste-ZeroWasteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeroWaste-ZeroWasteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZeroWaste-ZeroWasteUITests/Pods-ZeroWaste-ZeroWasteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		40625DA1266F12F1000EB9B4 /* MissionTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTabView.swift; sourceTree = "<group>"; };
 		4210010A24D4EF6D7B41BF54 /* ResultBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultBase.swift; sourceTree = "<group>"; };
 		450A0F855BA7001F0A96ED29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4A4FEA3F10D02A0AFED1602E /* ZeroWasteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroWasteTests.swift; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 				33048C4C12B4EF52816F81F3 /* ZeroWasteUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		40625DA0266F12DD000EB9B4 /* MissionTab */ = {
+			isa = PBXGroup;
+			children = (
+				40625DA1266F12F1000EB9B4 /* MissionTabView.swift */,
+			);
+			path = MissionTab;
 			sourceTree = "<group>";
 		};
 		4639F1D59E8DC9D8A8FB3145 /* Models */ = {
@@ -354,6 +364,7 @@
 		9F9D577D382A9C4882372964 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				40625DA0266F12DD000EB9B4 /* MissionTab */,
 				90DCBC9C4AB5029C20DC8233 /* TestView.swift */,
 				7012BD6C4DA8DB851EFF66C4 /* Community */,
 				88BB84DC221DB732FA8E30BD /* Loading */,
@@ -676,6 +687,7 @@
 				088D8E3188BD22E29B2B0432 /* Certification.swift in Sources */,
 				82E51F67E06C18BB5DA40924 /* Color+.swift in Sources */,
 				56F795CDF481C8C11229ED32 /* Color+StyleGuide.swift in Sources */,
+				40625DA2266F12F1000EB9B4 /* MissionTabView.swift in Sources */,
 				18FE2C533FD9C1ADE5F20724 /* CommunityView.swift in Sources */,
 				2416B8456539557FB52488CB /* ContentsTabView.swift in Sources */,
 				E365CA0E8ED54A9C792C8FC7 /* Encodable+toJSON.swift in Sources */,
