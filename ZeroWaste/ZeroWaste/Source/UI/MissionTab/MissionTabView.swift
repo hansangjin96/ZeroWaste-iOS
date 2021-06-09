@@ -18,22 +18,29 @@ struct MissionTabView: View {
             Color.zBlack
                 .ignoresSafeArea()
             
-            // https://github.com/QuynhNguyen/SlidingTabView/blob/master/Sources/SlidingTabView/SlidingTabView.swift
             VStack {
-                HStack {
-                    ForEach(self.tabs, id: \.self) { tab in
-                        Button(action: {
+                placeTab
+                MissionListView()
+            }
+        }
+    }
+    
+    // https://github.com/QuynhNguyen/SlidingTabView/blob/master/Sources/SlidingTabView/SlidingTabView.swift
+    var placeTab: some View {
+        HStack {
+            ForEach(self.tabs, id: \.self) { tab in
+                Button(action: {
 //                            let selection = self.tabs.firstIndex(of: tab) ?? 0
 //                            self.selectionState = selection
-                        }) {
-                            HStack {
-                                Spacer()
-                                Text(tab.description)
-                                Spacer()
-                            }
-                        }
-                        .padding(.vertical, 16)
-                        .foregroundColor(.zWhite)
+                }) {
+                    HStack {
+                        Spacer()
+                        Text(tab.description)
+                        Spacer()
+                    }
+                }
+                .padding(.vertical, 16)
+                .foregroundColor(.zWhite)
 //                        .accentColor(
 //                            self.isSelected(tabIdentifier: tab)
 //                                ? self.activeAccentColor
@@ -43,10 +50,6 @@ struct MissionTabView: View {
 //                            self.isSelected(tabIdentifier: tab)
 //                                ? self.activeTabColor
 //                                : self.inactiveTabColor)
-                    }
-                }
-                
-                Spacer()
             }
         }
     }

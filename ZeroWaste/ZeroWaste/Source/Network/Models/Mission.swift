@@ -71,12 +71,24 @@ extension Mission {
         case extraHard = "extra_hard"
     }
     
-    enum Theme: String, Codable {
+    enum Theme: String, Codable, CaseIterable {
+        case all
         case refuse
         case reduce
         case reuse
         case recycle
         case rot
+        
+        var description: String {
+            switch self {
+            case .all: return "전체"
+            case .refuse: return "거절하기"
+            case .reduce: return "줄이기"
+            case .reuse: return "재사용"
+            case .recycle: return "재활용"
+            case .rot: return "썩히기"
+            }
+        }
     }
     
     enum Ordering: String, Codable {
