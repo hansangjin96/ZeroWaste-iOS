@@ -57,14 +57,12 @@ struct MissionView: View {
             }
 
         }
-        .navigationBarTitle("", displayMode: .inline)
+        
     }
 }
 
 struct MissionView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            MissionView()
-        }
+        MissionView()
     }
 }

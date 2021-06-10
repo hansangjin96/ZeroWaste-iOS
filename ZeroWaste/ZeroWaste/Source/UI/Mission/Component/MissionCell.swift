@@ -56,7 +56,7 @@ struct MissionCell: View {
             }
         }
         .padding()
-        .background(Color(UIColor.systemGroupedBackground))
+        .background(Color.zWhite)
         .cornerRadius(16)
     }
 }

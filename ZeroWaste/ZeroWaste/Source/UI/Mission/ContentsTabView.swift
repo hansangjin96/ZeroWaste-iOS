@@ -54,11 +54,11 @@ struct ContentsTabView: View {
                     }
                     .tag(Tabs.communityTab)
             }
-
             .navigationBarTitle(navBarTitle(tabSelection: self.tabSelection), displayMode: .large)
+            .navigationBarHidden(
+                self.tabSelection == .missionTab ? true : false
+            )
             .font(.kotraBold(22))
-            //add the NavigationBarTitle here.
-
         }
 
     }

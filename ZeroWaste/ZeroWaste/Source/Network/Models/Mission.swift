@@ -40,7 +40,7 @@ struct Mission: Codable {
 }
 
 extension Mission {
-    enum Place: String, Codable {
+    enum Place: String, Codable, CaseIterable {
         case all
         case kitchen
         case cafe
@@ -58,7 +58,7 @@ extension Mission {
             case .restaurant: return "식당"
             case .etc: return "기타"
             case .bathroom: return "화장실"
-            case .outside: return "야외"
+            case .outside: return "실외"
             }
         }
     }

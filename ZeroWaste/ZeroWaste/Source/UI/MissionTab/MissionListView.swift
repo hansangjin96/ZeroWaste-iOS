@@ -7,50 +7,66 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MissionListView: View {
+    
+    @State private var missionLists: [Mission] = []
+    @State private var selectedFilter: Mission.Theme = .all
+    @Binding var selectedTab: Mission.Place
+    
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color.zGray5
+                .ignoresSafeArea()
+            
             VStack {
+                HStack {
+                    Text("미션 리스트")
+                        .font(.kotraBold(18))
+                    
+                    Spacer()
+                }
+                .padding(.top, 25)
+                .padding(.horizontal)
                 filterList
                 missionList
             }
-            .navigationTitle("미션 리스트")
-            .navigationBarTitleDisplayMode(.large)
         }
     }
     
     var filterList: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
-//                ForEach(Mission.Theme.allCases) { theme in
-//                    Button(theme.description) { 
-//                        // code
-//                    }
-//                }
-                
-                ForEach(0..<Mission.Theme.allCases.count) { index in
-                    Button("\(Mission.Theme.allCases[index].description)") { 
-                        // code
+                ForEach(Mission.Theme.allCases, id: \.self) { tab in
+                    Button("\(tab.description)") { 
+                        self.selectedFilter = tab
                     }
-                    .padding(.horizontal)
-                    .foregroundColor(.zGray2)
-                    
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.zGray2, lineWidth: 1))
-                    .frame(width: 70, height: 30)
-//                    .border(Color.zGray2)
-//                    .cornerRadius(50)
-//                    .clipShape(Capsule())
+                    .font(.system(size: 13, weight: .semibold))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 7)
+                    .foregroundColor(
+                        self.selectedFilter == tab ? .zWhite : .zGray2
+                    )
+                    .background(
+                        self.selectedFilter == tab ? Color.zBlackHole : Color.zWhite
+                    )
+                    .cornerRadius(15)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.zGray2, lineWidth: 1)
+                    )   
                 }
-//                .padding(10)
             }
-            .frame(height: 50)
+            .frame(height: 40)
         }
+        .padding(.leading, 15)
     }
     
     var missionList: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVStack {
+//                ForEach(missionLists, id: \.id) { cell in
                 ForEach(0..<10) { cell in
                     NavigationLink(
                         destination: MissionView(),
@@ -58,14 +74,18 @@ struct MissionListView: View {
                             MissionCell()
                         }
                     )
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
                 }
             }
         }
+        .padding([.horizontal, .bottom])
     }
 }
 
 struct MissionListView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        MissionListView()
+        MissionListView(selectedTab: .constant(.all))
     }
 }

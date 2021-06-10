@@ -50,7 +50,7 @@ enum Endpoint {
     
     // MARK: Missions
     case missionsList(
-            place: String? = nil, 
+            place: Mission.Place? = nil, 
             difficulty: Mission.Difficulty? = nil,
             theme: Mission.Theme? = nil,
             ordering: Mission.Ordering? = nil

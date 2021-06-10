@@ -11,7 +11,7 @@ import SwiftUI
 struct MissionTabView: View {
     
     @State private var selectedTab: Mission.Place = .all
-    private let tabs: [Mission.Place] = [.all, .kitchen, .cafe, .restaurant, .etc]
+    @State private var isDraggedUp: Bool = false
     
     var body: some View {
         ZStack {
@@ -19,40 +19,99 @@ struct MissionTabView: View {
                 .ignoresSafeArea()
             
             VStack {
+                missionTabTitle
+                    .padding([.leading, .top])
                 placeTab
-                MissionListView()
+                
+                if isDraggedUp.isFalse {
+                    ZStack {
+                        Image("mission_place_background")
+                            .resizable()
+                            .scaledToFill()
+                        // TODO: 이렇게 짜르면 이미지가 탭을 덮어 탭 제스쳐가 안먹음
+//                            .frame(maxHeight: 220)
+//                            .clipped()
+                        
+                        Image("mission_place_\(selectedTab.rawValue)")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 200)
+                            
+                    }
+                    .transition(.opacity)
+                }
+                
+                MissionListView(selectedTab: $selectedTab)
+                    .gesture(dragGesture)
+                    .cornerRadius(30)
+                    .ignoresSafeArea()
             }
         }
     }
     
-    // https://github.com/QuynhNguyen/SlidingTabView/blob/master/Sources/SlidingTabView/SlidingTabView.swift
-    var placeTab: some View {
+    private var missionTabTitle: some View {
         HStack {
-            ForEach(self.tabs, id: \.self) { tab in
-                Button(action: {
-//                            let selection = self.tabs.firstIndex(of: tab) ?? 0
-//                            self.selectionState = selection
-                }) {
-                    HStack {
-                        Spacer()
-                        Text(tab.description)
-                        Spacer()
-                    }
-                }
-                .padding(.vertical, 16)
+            Text("장소 별 미션")
+                .font(.kotraBold(22))
                 .foregroundColor(.zWhite)
-//                        .accentColor(
-//                            self.isSelected(tabIdentifier: tab)
-//                                ? self.activeAccentColor
-//                                : self.inactiveAccentColor
-//                        )
-//                        .background(
-//                            self.isSelected(tabIdentifier: tab)
-//                                ? self.activeTabColor
-//                                : self.inactiveTabColor)
+            
+            Spacer()
+        }
+    }
+    
+    // https://github.com/QuynhNguyen/SlidingTabView/blob/master/Sources/SlidingTabView/SlidingTabView.swift
+    private var placeTab: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(Mission.Place.allCases, id: \.self) { tab in
+                    Button(action: {
+                        self.selectedTab = tab
+                    }) {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text(tab.description)
+                                    .font(.system(size: 15, weight: .semibold))
+                                if self.selectedTab == tab {
+                                    Color.zMain
+                                        .frame(width: 50, height: 3)
+                                } else {
+                                    Color.zBlack
+                                        .frame(width: 50, height: 3)
+                                }
+                            }
+                            Spacer()
+                        }
+                    }
+                    .padding(.vertical, 16)
+                    .foregroundColor(
+                        self.selectedTab == tab ? .zMain : .zWhite
+                    )
+                }
             }
         }
     }
+    
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded { value in
+                if value.translation.height < 0 && value.translation.width < 100 && value.translation.width > -100 {
+                    print("up swipe ended")
+                    
+                    withAnimation { 
+                        isDraggedUp = true
+                    }
+                }
+                
+                if value.translation.height > 0 && value.translation.width < 100 && value.translation.width > -100 {
+                    print("down swipe")
+                    
+                    withAnimation { 
+                        isDraggedUp = false
+                    }
+                }
+            }
+    } 
 }
 
 struct MissionTabView_Previews: PreviewProvider {
