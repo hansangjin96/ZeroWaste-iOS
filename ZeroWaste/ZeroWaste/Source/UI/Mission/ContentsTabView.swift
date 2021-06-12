@@ -37,7 +37,7 @@ struct ContentsTabView: View {
                     .tag(Tabs.homeTab)
 
                 // MARK: 미션 탭
-                MissionTabView()
+                MissionTabView(viewModel: .init(networkService: .init()))
                     .tabItem {
                         Image("iconMissionTabPressed")
                         Text("미션")

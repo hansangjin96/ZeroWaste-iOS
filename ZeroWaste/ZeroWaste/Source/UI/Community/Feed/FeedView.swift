@@ -20,8 +20,8 @@ struct FeedView: View {
                     .cornerRadius(16)
 
                 HStack {
-                    CategoryCell()
-                    CategoryCell()
+                    CategoryCell(theme: .recycle)
+                    CategoryCell(theme: .recycle)
                 }
                 .padding()
 

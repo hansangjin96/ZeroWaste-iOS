@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct MissionCell: View {
+    
+    private let mission: Mission
+    
+    init(mission: Mission) {
+        self.mission = mission
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
@@ -21,20 +28,20 @@ struct MissionCell: View {
 
                 // MARK: 미션 주제 / 참가인원
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("{수돗물 끓여 마시기}")
+                    Text(mission.name)
                         .font(.system(18, .heavy))
                         .lineLimit(2)
 
                     HStack {
                         Image("iconPerson")
 
-                        Text("{푸른지구}")
+                        Text(mission.creater.nickname)
                             .font(.system(13, .regular))
 
                         Divider()
                             .frame(height: 10)
 
-                        Text("{2,431명}")
+                        Text("\(mission.inProgressCount)")
                             .font(.system(13, .regular))
                     }
                 }
@@ -46,8 +53,10 @@ struct MissionCell: View {
 
             // MARK: 카테고리 / 좋아요
             HStack(alignment: .bottom) {
-                CategoryCell()
-                CategoryCell()
+                ForEach(mission.theme, id: \.self) { theme in
+                    CategoryCell(theme: theme)
+                }
+                
                 Spacer()
                 Image("iconHeart")
                     .renderingMode(.template)
@@ -64,7 +73,34 @@ struct MissionCell: View {
 struct MissionCell_Previews: PreviewProvider {
     static var previews: some View {
 //        ForEach(ColorScheme.allCases, id: \.self) {
-            MissionCell()
+            MissionCell(mission: Mission(
+                id: 1,
+                name: "테스트 미션", 
+                owner: 2,
+                place: .etc,
+                theme: [.rot],
+                difficulty: .veryEasy,
+                bannerImgUrls: [
+                    URL(string: "https://zerowaste-bucket1.s3.amazonaws.com/users/2/QJ6OSKEGVP")!,
+                    URL(string: "https://zerowaste-bucket1.s3.amazonaws.com/users/2/UKMDY49DHH")!,
+                    URL(string: "https://zerowaste-bucket1.s3.amazonaws.com/users/2/XYC1E2IJGX")!
+                ],
+                content: "테스트 미션 설명",
+                sentenceForCheer: "호우",
+                likesCount: 2,
+                successfulCount: 2,
+                inProgressCount: 0,
+                creater: User(
+                    id: 2,
+                    nickname: "hwang",
+                    level: 1,
+                    isNotify: true,
+                    completedMissionCount: 5,
+                    progressingMissionCount: 2,
+                    likeMissionCount: 7,
+                    description: ""
+                )
+            ))
                 .previewLayout(.sizeThatFits)
 //                .preferredColorScheme($0)
 //        }

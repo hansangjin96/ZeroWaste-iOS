@@ -10,8 +10,14 @@ import SwiftUI
 
 struct MissionTabView: View {
     
-    @State private var selectedTab: Mission.Place = .all
+    @ObservedObject private var viewModel: MissionTabViewModel
+    @State private var selectedPlaceTab: Mission.Place = .all
+    @State private var selectedThemeTab: Mission.Theme = .all
     @State private var isDraggedUp: Bool = false
+    
+    init(viewModel: MissionTabViewModel) {
+        self._viewModel = ObservedObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         ZStack {
@@ -29,19 +35,19 @@ struct MissionTabView: View {
                             .resizable()
                             .scaledToFill()
                         // TODO: 이렇게 짜르면 이미지가 탭을 덮어 탭 제스쳐가 안먹음
-//                            .frame(maxHeight: 220)
-//                            .clipped()
+                        //                            .frame(maxHeight: 220)
+                        //                            .clipped()
                         
-                        Image("mission_place_\(selectedTab.rawValue)")
+                        Image("mission_place_\(selectedPlaceTab.rawValue)")
                             .resizable()
                             .scaledToFit()
                             .frame(height: 200)
-                            
+                        
                     }
                     .transition(.opacity)
                 }
                 
-                MissionListView(selectedTab: $selectedTab)
+                missionView
                     .gesture(dragGesture)
                     .cornerRadius(30)
                     .ignoresSafeArea()
@@ -65,14 +71,15 @@ struct MissionTabView: View {
             HStack {
                 ForEach(Mission.Place.allCases, id: \.self) { tab in
                     Button(action: {
-                        self.selectedTab = tab
+                        self.selectedPlaceTab = tab
+                        viewModel.apply(.fetchMissionList(place: selectedPlaceTab, theme: selectedThemeTab))
                     }) {
                         HStack {
                             Spacer()
                             VStack {
                                 Text(tab.description)
                                     .font(.system(size: 15, weight: .semibold))
-                                if self.selectedTab == tab {
+                                if self.selectedPlaceTab == tab {
                                     Color.zMain
                                         .frame(width: 50, height: 3)
                                 } else {
@@ -85,7 +92,7 @@ struct MissionTabView: View {
                     }
                     .padding(.vertical, 16)
                     .foregroundColor(
-                        self.selectedTab == tab ? .zMain : .zWhite
+                        self.selectedPlaceTab == tab ? .zMain : .zWhite
                     )
                 }
             }
@@ -112,10 +119,84 @@ struct MissionTabView: View {
                 }
             }
     } 
+    
+    private var missionView: some View {
+        ZStack {
+            Color.zGray5
+                .ignoresSafeArea()
+            
+            VStack {
+                missionListTitleView
+                filterListView
+                missionListView
+            }
+        }
+        .onAppear {
+            viewModel.apply(.fetchMissionList(place: selectedPlaceTab, theme: selectedThemeTab))
+        }
+    }
+    
+    private var missionListTitleView: some View {
+        HStack {
+            Text("미션 리스트")
+                .font(.kotraBold(18))
+            
+            Spacer()
+        }
+        .padding(.top, 25)
+        .padding(.horizontal)
+    }
+    
+    private var filterListView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack {
+                ForEach(Mission.Theme.allCases, id: \.self) { tab in
+                    Button("\(tab.description)") { 
+                        self.selectedThemeTab = tab
+                        self.viewModel.apply(.fetchMissionList(place: selectedPlaceTab, theme: selectedThemeTab))
+                    }
+                    .font(.system(size: 13, weight: .semibold))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 7)
+                    .foregroundColor(
+                        self.selectedThemeTab == tab ? .zWhite : .zGray2
+                    )
+                    .background(
+                        self.selectedThemeTab == tab ? Color.zBlackHole : Color.zWhite
+                    )
+                    .cornerRadius(15)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.zGray2, lineWidth: 1)
+                    )   
+                }
+            }
+            .frame(height: 40)
+        }
+        .padding(.leading, 15)
+    }
+    
+    private var missionListView: some View {
+        ScrollView(showsIndicators: false) {
+            LazyVStack {
+                ForEach(viewModel.missionList, id: \.id) { mission in
+                    NavigationLink(
+                        destination: MissionView(mission: mission),
+                        label: {
+                            MissionCell(mission: mission)
+                        }
+                    )
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
+                }
+            }
+        }
+        .padding([.horizontal, .bottom])
+    }
 }
 
 struct MissionTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MissionTabView()
+        MissionTabView(viewModel: .init(networkService: .init()))
     }
 }

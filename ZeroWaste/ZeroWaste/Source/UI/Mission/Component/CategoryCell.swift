@@ -8,20 +8,27 @@
 import SwiftUI
 
 struct CategoryCell: View {
+    
+    private let theme: Mission.Theme
+    
+    init(theme: Mission.Theme) {
+        self.theme = theme
+    }
+    
     var body: some View {
-        Text("{카테고리명}")
+        Text(theme.description)
             .font(.system(13, .regular))
             .foregroundColor(.zBlack)
             .padding(.vertical, 4)
             .padding(.horizontal, 12)
-            .background(Color.zGray3)
+            .background(Color.zGray5)
             .cornerRadius(35)
     }
 }
 
 struct CategoryCell_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryCell()
+        CategoryCell(theme: .recycle)
             .previewLayout(.sizeThatFits)
     }
 }

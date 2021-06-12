@@ -25,8 +25,9 @@
 		3E832DCE6EF684554CF2BA80 /* FeedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33725FBDAD0FD08D0F3F013F /* FeedProfileView.swift */; };
 		405387062670CC8300E4744E /* MissionFilterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405387052670CC8300E4744E /* MissionFilterButtonStyle.swift */; };
 		40625DA2266F12F1000EB9B4 /* MissionTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40625DA1266F12F1000EB9B4 /* MissionTabView.swift */; };
-		40625DA4267065D7000EB9B4 /* MissionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40625DA3267065D7000EB9B4 /* MissionListView.swift */; };
 		408C2DE72670E9F800812AF0 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C2DE62670E9F800812AF0 /* NavigationConfigurator.swift */; };
+		40C877A22674646900D23CE5 /* MissionTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C877A12674646900D23CE5 /* MissionTabViewModel.swift */; };
+		40C877A426747B6900D23CE5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C877A326747B6900D23CE5 /* BaseViewModel.swift */; };
 		41318797F6EE81114A4095F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E398F9099FE433029F92BDDA /* Preview Assets.xcassets */; };
 		438F71B172D4D25F46EBDFB8 /* BlockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D06E5A4AEA8DE3037872AF1 /* BlockList.swift */; };
 		48CB68DC35F0D0BC28D62849 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8CE642D237698EA5FD50F /* SubmitButton.swift */; };
@@ -81,8 +82,9 @@
 		3BDC4439B29E0D94BC3D1296 /* Pods-ZeroWaste-ZeroWasteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeroWaste-ZeroWasteUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZeroWaste-ZeroWasteUITests/Pods-ZeroWaste-ZeroWasteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		405387052670CC8300E4744E /* MissionFilterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionFilterButtonStyle.swift; sourceTree = "<group>"; };
 		40625DA1266F12F1000EB9B4 /* MissionTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTabView.swift; sourceTree = "<group>"; };
-		40625DA3267065D7000EB9B4 /* MissionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListView.swift; sourceTree = "<group>"; };
 		408C2DE62670E9F800812AF0 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		40C877A12674646900D23CE5 /* MissionTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTabViewModel.swift; sourceTree = "<group>"; };
+		40C877A326747B6900D23CE5 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		4210010A24D4EF6D7B41BF54 /* ResultBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultBase.swift; sourceTree = "<group>"; };
 		450A0F855BA7001F0A96ED29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4A4FEA3F10D02A0AFED1602E /* ZeroWasteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroWasteTests.swift; sourceTree = "<group>"; };
@@ -227,7 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				40625DA1266F12F1000EB9B4 /* MissionTabView.swift */,
-				40625DA3267065D7000EB9B4 /* MissionListView.swift */,
+				40C877A12674646900D23CE5 /* MissionTabViewModel.swift */,
 			);
 			path = MissionTab;
 			sourceTree = "<group>";
@@ -318,6 +320,7 @@
 			children = (
 				13F8CE642D237698EA5FD50F /* SubmitButton.swift */,
 				20A0C774CC89445A0BF96A11 /* UserDefaultStorage.swift */,
+				40C877A326747B6900D23CE5 /* BaseViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -705,7 +708,6 @@
 				3E832DCE6EF684554CF2BA80 /* FeedProfileView.swift in Sources */,
 				994BB6FBF061F321E8D9E639 /* FeedView.swift in Sources */,
 				16681C0D4EDE3E688AC15B78 /* Font+.swift in Sources */,
-				40625DA4267065D7000EB9B4 /* MissionListView.swift in Sources */,
 				299803708C00245DEB116C53 /* Int+hasError.swift in Sources */,
 				AC0421ABE8BD9C550F00175D /* LoadingView.swift in Sources */,
 				C69D7D304A5D77C03D12398C /* LoginView.swift in Sources */,
@@ -714,7 +716,9 @@
 				405387062670CC8300E4744E /* MissionFilterButtonStyle.swift in Sources */,
 				391D345D3F5DD65CD55656D3 /* MissionCell.swift in Sources */,
 				EB722986ADEAE4982B989BB2 /* MissionHomeView.swift in Sources */,
+				40C877A22674646900D23CE5 /* MissionTabViewModel.swift in Sources */,
 				5401AB67670B652627B6825F /* MissionView.swift in Sources */,
+				40C877A426747B6900D23CE5 /* BaseViewModel.swift in Sources */,
 				0C9713971220D69049A0779A /* NetworkConstant.swift in Sources */,
 				60E9F973F42C5ED7966CB81D /* NetworkManager.swift in Sources */,
 				34916C68F8FE14AF8C5BC74B /* OnboardView.swift in Sources */,
