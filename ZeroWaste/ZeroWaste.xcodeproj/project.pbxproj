@@ -28,6 +28,7 @@
 		408C2DE72670E9F800812AF0 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C2DE62670E9F800812AF0 /* NavigationConfigurator.swift */; };
 		40C877A22674646900D23CE5 /* MissionTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C877A12674646900D23CE5 /* MissionTabViewModel.swift */; };
 		40C877A426747B6900D23CE5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C877A326747B6900D23CE5 /* BaseViewModel.swift */; };
+		40EC3B512674C652007654BE /* MissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EC3B502674C652007654BE /* MissionService.swift */; };
 		41318797F6EE81114A4095F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E398F9099FE433029F92BDDA /* Preview Assets.xcassets */; };
 		438F71B172D4D25F46EBDFB8 /* BlockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D06E5A4AEA8DE3037872AF1 /* BlockList.swift */; };
 		48CB68DC35F0D0BC28D62849 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8CE642D237698EA5FD50F /* SubmitButton.swift */; };
@@ -39,7 +40,7 @@
 		56F795CDF481C8C11229ED32 /* Color+StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FD206D513ACFB8F8E9998 /* Color+StyleGuide.swift */; };
 		5C87501EA8B573FDC48E8322 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AC79E40C588C43A4F8588 /* Colors.xcassets */; };
 		5CAF95B5EA1829E87AEF68B7 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39854FE0DD5B4B44DECF994F /* ServiceProvider.swift */; };
-		60E9F973F42C5ED7966CB81D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2404A3F2FFE2B7F6E95C12 /* NetworkManager.swift */; };
+		60E9F973F42C5ED7966CB81D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2404A3F2FFE2B7F6E95C12 /* NetworkService.swift */; };
 		61D637111C3F9852E8EE252F /* ResultBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4210010A24D4EF6D7B41BF54 /* ResultBase.swift */; };
 		66BC94A36A7CD85E187D12C7 /* PledgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5427D3187A99B56491986F /* PledgeView.swift */; };
 		82E51F67E06C18BB5DA40924 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC532F6257852D1983E5083 /* Color+.swift */; };
@@ -85,6 +86,7 @@
 		408C2DE62670E9F800812AF0 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		40C877A12674646900D23CE5 /* MissionTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTabViewModel.swift; sourceTree = "<group>"; };
 		40C877A326747B6900D23CE5 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		40EC3B502674C652007654BE /* MissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionService.swift; sourceTree = "<group>"; };
 		4210010A24D4EF6D7B41BF54 /* ResultBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultBase.swift; sourceTree = "<group>"; };
 		450A0F855BA7001F0A96ED29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4A4FEA3F10D02A0AFED1602E /* ZeroWasteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroWasteTests.swift; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 		910FA9EF5AE4F1CF24A3F202 /* Int+hasError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+hasError.swift"; sourceTree = "<group>"; };
 		948D507313F4A3DA6114AD42 /* Encodable+toJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toJSON.swift"; sourceTree = "<group>"; };
 		9C3F79F7FB0755EFE4888021 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
-		9D2404A3F2FFE2B7F6E95C12 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9D2404A3F2FFE2B7F6E95C12 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A25ECDC1CF9DFC8C2A48E3F8 /* Pods-ZeroWaste.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeroWaste.debug.xcconfig"; path = "Target Support Files/Pods-ZeroWaste/Pods-ZeroWaste.debug.xcconfig"; sourceTree = "<group>"; };
 		A8A70F34740A78DFDD2A7F3A /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
 		B6EE970EC47CB2E3BCA28F9D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -436,7 +438,7 @@
 			children = (
 				FAE0A988B28073BB792F52ED /* Endpoint.swift */,
 				62009614FC109CC5856F98AF /* NetworkConstant.swift */,
-				9D2404A3F2FFE2B7F6E95C12 /* NetworkManager.swift */,
+				9D2404A3F2FFE2B7F6E95C12 /* NetworkService.swift */,
 				4639F1D59E8DC9D8A8FB3145 /* Models */,
 			);
 			path = Network;
@@ -466,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				39854FE0DD5B4B44DECF994F /* ServiceProvider.swift */,
+				40EC3B502674C652007654BE /* MissionService.swift */,
 			);
 			path = ServiceProvider;
 			sourceTree = "<group>";
@@ -720,7 +723,7 @@
 				5401AB67670B652627B6825F /* MissionView.swift in Sources */,
 				40C877A426747B6900D23CE5 /* BaseViewModel.swift in Sources */,
 				0C9713971220D69049A0779A /* NetworkConstant.swift in Sources */,
-				60E9F973F42C5ED7966CB81D /* NetworkManager.swift in Sources */,
+				60E9F973F42C5ED7966CB81D /* NetworkService.swift in Sources */,
 				34916C68F8FE14AF8C5BC74B /* OnboardView.swift in Sources */,
 				8ED10C08C80AA51C465FDF30 /* OngoingMissionCell.swift in Sources */,
 				12D6E4A9A7F3A813E566D54B /* Optional+isSome.swift in Sources */,
@@ -730,6 +733,7 @@
 				61D637111C3F9852E8EE252F /* ResultBase.swift in Sources */,
 				5CAF95B5EA1829E87AEF68B7 /* ServiceProvider.swift in Sources */,
 				D64221E521376A0F3EE059C3 /* StoreMapView.swift in Sources */,
+				40EC3B512674C652007654BE /* MissionService.swift in Sources */,
 				48CB68DC35F0D0BC28D62849 /* SubmitButton.swift in Sources */,
 				E77962C54D5983C784745ACB /* TestView.swift in Sources */,
 				BC426605F1CF0F81FE22E817 /* User.swift in Sources */,

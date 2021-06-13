@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.3)
+  - CancelBag (1.0.0)
   - KakaoSDK (2.5.3):
     - KakaoSDKAuth (= 2.5.3)
     - KakaoSDKCommon (= 2.5.3)
@@ -35,12 +36,14 @@ PODS:
   - Then (2.7.0)
 
 DEPENDENCIES:
+  - CancelBag
   - KakaoSDK
   - Then
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CancelBag
     - KakaoSDK
     - KakaoSDKAuth
     - KakaoSDKCommon
@@ -54,6 +57,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CancelBag: d6887449c885068d13fc120cd1a38e3239000923
   KakaoSDK: 61f5d72d4c90188bf3d6567ffeef42d2827e9f77
   KakaoSDKAuth: b1a0b9a84c21c967c4139d221edce83a7f15cdfe
   KakaoSDKCommon: 08548932f6f570215ea038241a98157c0b3f7a8b
@@ -65,6 +69,6 @@ SPEC CHECKSUMS:
   KakaoSDKUser: 5d2de71fe070455bbaaad6a37af3eb500fbc8972
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 91ca1bd2bbf3b39da1d58e8acced6be958f76ac7
+PODFILE CHECKSUM: 4631c255337a491ebaa3920dd46078372f06ba35
 
 COCOAPODS: 1.10.0

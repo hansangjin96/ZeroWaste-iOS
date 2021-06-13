@@ -271,9 +271,9 @@ extension Endpoint: EndpointType {
             
         case let .missionsList(place, difficulty, theme, ordering):
             return .requestHeader(urlParams: [
-                "place": place,
+                "place": place == .all ? nil : place,
                 "difficulty": difficulty,
-                "theme": theme,
+                "theme": theme == .all ? nil : theme,
                 "ordering": ordering
             ])
             

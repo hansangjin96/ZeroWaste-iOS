@@ -8,70 +8,43 @@
 
 import Foundation
 import Combine
+import CancelBag
 
 final class MissionTabViewModel: BaseViewModel, ObservableObject {
     
-    // MARK: Event
+    // MARK: Action
     
     enum Input {
         case fetchMissionList(place: Mission.Place, theme: Mission.Theme)
     }
     
-    enum Output {
-        
-    }
-    
-    // MARK: Property
-    
-    @Published var missionList: [Mission] = []
+    // MARK: Mutation
     
     private let fetchMissionSubject: PassthroughSubject<(Mission.Place, Mission.Theme), Never> = .init()
     
-    private let networkService: NetworkManager
-    private var bag = Set<AnyCancellable>()
+    // MARK: State
     
+    @Published var missionList: [Mission] = []
     
+    // MARK: Property
+    
+    private let missionService: MissionServiceType
+    private var cancelBag = CancelBag() // Set<AnyCancellable>()
     
     // MARK: Init
     
-    init(networkService: NetworkManager) {
-        self.networkService = networkService
-        
-        bindInput()
-        bindOutput()
+    init(missionService: MissionServiceType) {
+        self.missionService = missionService
     }
-}
-
-extension MissionTabViewModel {
+    
+    // MARK: Transform
+    
     func apply(_ input: Input) {
         switch input {
         case let .fetchMissionList(place, theme):
-            networkService.request(
-                with: .missionsList(place: place == .all ? nil : place, difficulty: nil, theme: theme == .all ? nil : theme, ordering: nil), 
-                for: ResultBase<[Mission]>.self
-            )
-            .catch { error -> Empty<ResultBase<[Mission]>, Never> in
-                print("error occurred", error, error.localizedDescription)
-                return .init()
-            }
-            .map { response -> [Mission] in
-                print(response)
-                
-                guard response.errorCode.hasNoError else { return [] }
-                
-                return response.data
-            }
-            .assign(to: \.missionList, on: self)
-            .store(in: &bag)
-            
+            missionService.fetchMissionList(place: place, theme: theme)
+                .assign(to: \.missionList, on: self)
+                .cancel(with: cancelBag)
         }
-    }
-    
-    func bindInput() {
-        
-    }
-    
-    func bindOutput() {
-        
     }
 }

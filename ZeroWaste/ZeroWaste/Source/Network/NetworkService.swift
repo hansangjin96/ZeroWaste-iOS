@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-protocol NetworkManagerType {
+protocol NetworkServiceType {
     func request<T: Codable>(with endpoint: Endpoint, for type: T.Type) -> AnyPublisher<T, Error>
 }
 
-final class NetworkManager: NetworkManagerType {
+final class NetworkService: NetworkServiceType {
     func request<T: Codable>(with endpoint: Endpoint, for type: T.Type) -> AnyPublisher<T, Error> {
         let decoder = JSONDecoder()
         let session = URLSession(configuration: .default)

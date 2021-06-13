@@ -26,31 +26,17 @@ struct MissionTabView: View {
             
             VStack {
                 missionTabTitle
-                    .padding([.leading, .top])
+                
                 placeTab
                 
                 if isDraggedUp.isFalse {
-                    ZStack {
-                        Image("mission_place_background")
-                            .resizable()
-                            .scaledToFill()
-                        // TODO: 이렇게 짜르면 이미지가 탭을 덮어 탭 제스쳐가 안먹음
-                        //                            .frame(maxHeight: 220)
-                        //                            .clipped()
-                        
-                        Image("mission_place_\(selectedPlaceTab.rawValue)")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 200)
-                        
-                    }
-                    .transition(.opacity)
+                    placeTabImageView
                 }
                 
+                sympathyRankingImageView
+                
                 missionView
-                    .gesture(dragGesture)
-                    .cornerRadius(30)
-                    .ignoresSafeArea()
+                    
             }
         }
     }
@@ -63,6 +49,7 @@ struct MissionTabView: View {
             
             Spacer()
         }
+        .padding([.leading, .top])
     }
     
     // https://github.com/QuynhNguyen/SlidingTabView/blob/master/Sources/SlidingTabView/SlidingTabView.swift
@@ -96,6 +83,51 @@ struct MissionTabView: View {
                     )
                 }
             }
+        }
+    }
+    
+    private var placeTabImageView: some View {
+        ZStack {
+            Image("mission_place_background")
+                .resizable()
+                .scaledToFill()
+            // TODO: 이렇게 짜르면 이미지가 탭을 덮어 탭 제스쳐가 안먹음
+            //                            .frame(maxHeight: 220)
+            //                            .clipped()
+            
+            Image("mission_place_\(selectedPlaceTab.rawValue)")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 200)
+            
+        }
+        .transition(.opacity)
+    }
+    
+    private var sympathyRankingImageView: some View {
+        VStack(alignment: .leading) {
+            Text("\(selectedPlaceTab.description) 미션 공감 순위")
+                .font(.kotraBold(22))
+                .foregroundColor(.zWhite)
+                .padding([.leading, .top])
+            
+            HStack {
+                ForEach(0..<3) { _ in
+                    VStack {
+                        Image("icon_character_would_you")
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.zWhite, lineWidth: 2)
+                            )
+                        
+                        Text("test")
+                    }
+                }
+            }
+            .padding()
         }
     }
     
@@ -134,6 +166,9 @@ struct MissionTabView: View {
         .onAppear {
             viewModel.apply(.fetchMissionList(place: selectedPlaceTab, theme: selectedThemeTab))
         }
+        .gesture(dragGesture)
+        .cornerRadius(30)
+        .ignoresSafeArea()
     }
     
     private var missionListTitleView: some View {
@@ -197,6 +232,6 @@ struct MissionTabView: View {
 
 struct MissionTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MissionTabView(viewModel: .init(networkService: .init()))
+        MissionTabView(viewModel: .init(missionService: MissionService(networkService: NetworkService())))
     }
 }

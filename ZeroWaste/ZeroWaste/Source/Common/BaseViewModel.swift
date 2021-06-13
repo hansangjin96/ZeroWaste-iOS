@@ -10,10 +10,6 @@ import Foundation
 
 protocol BaseViewModel {
     associatedtype Input
-    associatedtype Output
     
     func apply(_ input: Input)
-    
-    func bindInput()
-    func bindOutput()
 }
